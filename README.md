@@ -11,5 +11,3 @@ outstanding items
 * script to copy to S3
 * create index.html
 * create error.html
-* create login.html
-* create reg.html

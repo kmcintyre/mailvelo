@@ -1,1 +1,103 @@
-index
+<!DOCTYPE html>
+<html>
+<head>
+<title>MailVelo</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="description" content="MailVelo - Lightt Weight Mail">
+</head>
+<style>
+#top {
+	background: none repeat scroll 0 0 #EEEEEE;
+    border-bottom: 1px solid #CCCCCC;
+    margin-bottom: 1em;
+    min-height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+#bottom {
+	background-color:black;
+	height:.2em;
+}
+
+#inbox {
+	border: 1px solid #EEEEEE;
+	white-space:nowrap;
+	width: 100%;
+	display: table;
+}
+
+#lead {
+	width: 100%;
+	min-height: 200px;
+	text-align:center;
+}
+
+.left {
+	vertical-align:top;
+	display: table-cell;
+	width: 25%;	
+}
+.right {
+	vertical-align:top;
+	display: table-cell;
+	width: 75%;	
+}
+.subject{
+	max-width:28em;
+	overflow: hidden;
+}
+.from {
+	max-width:14em;
+	overflow: hidden;
+}
+.clickable {
+	cursor:pointer;
+}
+.oddemail {
+	background-color:white;
+}
+.evenemail {
+	background-color:#EEEEEE;
+	
+}
+</style>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<body>
+	
+	<div id="top">www.mailvelo.com</div>		
+	<div class="table">
+		<div class="left">
+			<form>
+				<fieldset>
+					<legend id="postman">Login</legend>
+					<div id="status"></div>
+				</fieldset>
+			  	<fieldset>
+			    	<legend>Registration</legend>
+					<div id="incoming"></div>			    	
+			  	</fieldset>				
+		    </form>
+		</div>		
+		<div class="right">		
+			<div id="lead">
+			</div>
+			
+			<table id="inbox" cellspacing="0"' cellpadding="1">
+			<tr><th>Date</th><th>Subject</th><th>To</th><th>From</th></tr>	
+			<tr><td id="bottom" colspan="5"></td></tr>
+			</table>		
+		</div>
+	</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49535810-1', 'mailvelo.com');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
