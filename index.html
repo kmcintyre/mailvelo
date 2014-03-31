@@ -5,99 +5,116 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="description" content="MailVelo - Lightt Weight Mail">
 </head>
-<style>
-#top {
-	background: none repeat scroll 0 0 #EEEEEE;
-    border-bottom: 1px solid #CCCCCC;
-    margin-bottom: 1em;
-    min-height: 50px;
-    text-align: center;
-    line-height: 50px;
-}
-#bottom {
-	background-color:black;
-	height:.2em;
-}
-
-#inbox {
-	border: 1px solid #EEEEEE;
-	white-space:nowrap;
-	width: 100%;
-	display: table;
-}
-
-#lead {
-	width: 100%;
-	min-height: 200px;
-	text-align:center;
-}
-
-.left {
-	vertical-align:top;
-	display: table-cell;
-	width: 25%;	
-}
-.right {
-	vertical-align:top;
-	display: table-cell;
-	width: 75%;	
-}
-.subject{
-	max-width:28em;
-	overflow: hidden;
-}
-.from {
-	max-width:14em;
-	overflow: hidden;
-}
-.clickable {
-	cursor:pointer;
-}
-.oddemail {
-	background-color:white;
-}
-.evenemail {
-	background-color:#EEEEEE;
-	
-}
-</style>
+<link rel="stylesheet" type="text/css" href="index.css">
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+	try {
+		$('#regform').hide();
+		$("#login").click(function(e) {
+			e.preventDefault();						 
+			$('#login').next().hide();
+			setTimeout(
+				function () {
+					$('#login').html("Validating...");
+					setTimeout(
+						function() {
+							$('#login').html("Authenticating...");
+							setTimeout(
+								function() {
+									$('#login').html("Securing...");
+									setTimeout(
+										function() {
+											$('#login').html("Failed.").css("color", "red");
+											$("#login").unbind('click').bind('click', function(e) { e.preventDefault(); document.location.href="/"; } );
+										},
+									1000);
+								},
+								1000
+							);
+						},
+						1000
+					);
+				}, 
+				1000)
+		});
+		$('.step').not(':first').hide();
+		$("#reg").click(function(e) {
+			e.preventDefault();
+			$('.step:visible').hide().next().show();
+			if ( $('.step:visible').attr('id') == 'last' ) {
+				$("#reg").hide().unbind('click');
+				$("#regform").show();
+				$("#lead").hide();
+			} else {
+				$("#reg").html( $('.step:visible').attr('bv') );
+			}
+		});
+		var ctx = $('#lead')[0].getContext('2d');
+		ctx.canvas.width = document.documentElement.clientWidth- $('#left').width();
+		ctx.canvas.height = document.documentElement.clientHeight- $('#top').height();
+		ctx.font = '40pt sans-serif';
+		ctx.textAlign="center";	
+		ctx.fillText("Email", 100, 100);
+		ctx.fillText("Simplified", 200, 200);
+		ctx.save()		
+	} catch (err) {
+		alert(err);
+	}
+});
+</script>
 <body>
-	
-	<div id="top">www.mailvelo.com</div>		
+	<div id="top">www.mailvelo.com - lightweight email<span style="color:darkgreen;float:right">Beta</span></div>		
 	<div class="table">
-		<div class="left">
+		<div id="left">
 			<form>
 				<fieldset>
-					<legend id="postman">Login</legend>
-					<div id="status"></div>
+					<legend>Login</legend>
+					<div>
+						<input type="text" name="username" value="username" size="12"/><br>
+						<input type="text" id="password" name="password"size="12"/><br>
+					</div>
+					<button id="login">Go!</button>					
+					<div style="float:right">
+						<input type="checkbox" checked="checked"><span class="small">(auto)</span>
+					</div>
 				</fieldset>
 			  	<fieldset>
 			    	<legend>Registration</legend>
-					<div id="incoming"></div>			    	
+					<div class="step"><br></div>			
+					<div class="step" bv="I understand">
+						<br>
+						<span style="color:darkgreen">Beta Service</span><br>
+						<b>Offered As Is</b>
+						<br><br>																	
+					</div>					
+					<div class="step" bv="Continue to Reg">
+						<br>
+						<a href="terms.html">Terms of Use</a><br>
+						<input type="checkbox"> I accept
+						<br><br>						
+					</div>
+					<div class="step" id="last">
+						<br>
+						<b>Launch Reg Form</b>
+						<br><br>
+					</div>					
+					<button id="reg">Get Started!</button>					
 			  	</fieldset>				
 		    </form>
 		</div>		
-		<div class="right">		
-			<div id="lead">
-			</div>
-			
-			<table id="inbox" cellspacing="0"' cellpadding="1">
-			<tr><th>Date</th><th>Subject</th><th>To</th><th>From</th></tr>	
-			<tr><td id="bottom" colspan="5"></td></tr>
-			</table>		
+		<div id="right">		
+			<canvas id="lead"></canvas>			
+			<div id="regform">
+				<form action="reg.html">
+					<fieldset>
+												
+					</fieldset>					
+				</form>
+			</div>			
 		</div>
-	</div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-49535810-1', 'mailvelo.com');
-  ga('send', 'pageview');
-</script>
+	</div>		
 </body>
 </html>
