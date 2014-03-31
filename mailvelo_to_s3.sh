@@ -18,3 +18,4 @@ function checkDir {
 
 checkDir "/home/kevin/mailvelo/*.html" "/"
 checkDir "/home/kevin/mailvelo/*.css" "/"
+checkDir "/home/kevin/mailvelo/*.png" "/"
