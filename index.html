@@ -52,6 +52,8 @@ $(document).ready(function() {
 				$("#reg").html( $('.step:visible').attr('bv') );
 			}
 		});
+		
+		
 		var ctx = $('#lead')[0].getContext('2d');
 		ctx.canvas.width = document.documentElement.clientWidth- $('#left').width();
 		ctx.canvas.height = document.documentElement.clientHeight- $('#top').height();
@@ -59,7 +61,14 @@ $(document).ready(function() {
 		ctx.textAlign="center";	
 		ctx.fillText("Email", 100, 100);
 		ctx.fillText("Simplified", 200, 200);
-		ctx.save()		
+		ctx.save()
+		
+		drawing = new Image() 
+		drawing.src = "inbox.png" 
+		
+		ctx.drawImag
+		
+				
 	} catch (err) {
 		alert(err);
 	}
@@ -109,9 +118,12 @@ $(document).ready(function() {
 			<canvas id="lead"></canvas>			
 			<div id="regform">
 				<form action="reg.html">
-					<fieldset>
+					<fieldset id="justin">
 												
-					</fieldset>					
+					</fieldset>
+					<fieldset id="kevin">
+												
+					</fieldset>															
 				</form>
 			</div>			
 		</div>
