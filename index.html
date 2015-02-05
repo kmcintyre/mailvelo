@@ -15,8 +15,10 @@ $(document).ready(function() {
 	try {
 		$('#regform').hide();
 		$("#login").click(function(e) {
-			e.preventDefault();				
-			
+			e.preventDefault();
+			if ( $("#username").val() == 'username' ) {
+				return
+			} 
 			$("#login").unbind('click');
 			$('#login').next().hide();
 			setTimeout(
@@ -62,26 +64,31 @@ $(document).ready(function() {
 		ctx.canvas.width = document.documentElement.clientWidth- $('#left').width();
 		ctx.canvas.height = document.documentElement.clientHeight- $('#top').height();
 		ctx.font = '40pt sans-serif';
-		ctx.textAlign="center";	
-		ctx.fillText("Email", 100, 100);
+		
 		
 		drawing = new Image()
 		drawing.onload = function() {
 			ctx.save();
-			ctx.rotate(-Math.PI/10)
-			ctx.drawImage(drawing,200,200);
-			ctx.restore();
-			ctx.fillText("Simplified", 200, 200);
-      	};
-      	drawing.src = "inbox2.png";      	
-      	drawing2 = new Image()
-		drawing2.onload = function() {
-			ctx.save();
 			ctx.rotate(Math.PI/10)
-			ctx.drawImage(drawing2,200,200);
+			ctx.drawImage(drawing,0,0);
 			ctx.restore();
+      		drawing2 = new Image()
+			drawing2.onload = function() {
+				ctx.save();
+				ctx.rotate(Math.PI/10)
+				ctx.drawImage(drawing2,50,50);
+				ctx.restore();
+	      		ctx.textAlign="center";	
+				ctx.fillText("Email", 100, 100);			
+				ctx.fillText("Simplified", 150, 150);      	      									
+      		};
+      		drawing2.src = "inbox2.png";
+			
       	};
-      	drawing2.src = "inbox.png";      					
+      	drawing.src = "inbox.png";
+      	      	
+      	
+      	
 		
 	} catch (err) {
 		alert(err);
@@ -89,9 +96,9 @@ $(document).ready(function() {
 });
 </script>
 <body>
+	<span style="color: darkgreen; float: left; padding-top: 5px">(beta)</span>
 	<div id="top">
-		www.mailvelo.com - lightweight email<span
-			style="color: darkgreen; float: right; padding-top: 5px">(beta)</span>
+		www.mailvelo.com - lightweight email
 	</div>
 	<div class="table">
 		<div id="left">
